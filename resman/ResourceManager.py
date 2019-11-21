@@ -24,7 +24,7 @@ class ResourceManager(object):
     def __init__(self, resource_list=None):
         if resources is not None:
             self._resources = dict((res, None) for res in resource_list)
-        else
+        else:
             self._resources = {}
 
     def addResource(self, resource):
