@@ -22,57 +22,57 @@ class ResourceManager(object):
         resource_list -- list of resources
     """
     def __init__(self, resource_list=None):
-        if resources is not None:
+        if resource_list is not None:
             self._resources = dict((res, None) for res in resource_list)
         else:
             self._resources = {}
 
     def addResource(self, resource):
-    """
-    Adds a resource, sets user of resource to None.
+        """
+        Adds a resource, sets user of resource to None.
     
-    Attributes:
-        resource -- name of resource
-    """
+        Attributes:
+            resource -- name of resource
+        """
         self._resources[resource.name] = None
 
     def removeResource(self, resource):
-    """
-    Removes a resource.
+        """
+        Removes a resource.
     
-    Attributes:
-        resource -- name of resource
-    """
+        Attributes:
+            resource -- name of resource
+        """
         self._resources.pop(resource)
 
     def engageResource(self, resource, user):
-    """
-    Assigns a resource to a user.
+        """
+        Assigns a resource to a user.
     
-    Attributes:
-        resource -- name of resource
-        user -- name of user who wishes to engage resource
+        Attributes:
+            resource -- name of resource
+            user -- name of user who wishes to engage resource
 
-    Raises:
-        Engaged -- if resource already engaged by a user
-    """
+        Raises:
+            Engaged -- if resource already engaged by a user
+        """
         if self._resources[resource] is not None:
             raise Engaged(self._resources[resource])
 
         self._resources[resource] = user  
 
     def freeResource(self, resource, user):
-    """
-    Frees a resource by setting user of resource to None.
+        """
+        Frees a resource by setting user of resource to None.
     
-    Attributes:
-        resource -- name of resource
-        user -- name of user who wishes to free resource
+        Attributes:
+            resource -- name of resource
+            user -- name of user who wishes to free resource
 
-    Raises:
-        Free -- if resource already free
-        Engaged -- if resource engaged by another user
-    """
+        Raises:
+            Free -- if resource already free
+            Engaged -- if resource engaged by another user
+        """
         if self._resources[resource] is None:
             raise Free()
 
