@@ -45,9 +45,9 @@ class ResourceManager(object):
     """
         self._resources.pop(resource)
 
-    def assignResource(self, resource, user):
+    def engageResource(self, resource, user):
     """
-    Assigns a resource by setting user of resource to user.
+    Assigns a resource to a user.
     
     Attributes:
         resource -- name of resource
