@@ -34,7 +34,9 @@ class ResourceManager(object):
         Attributes:
             resource -- name of resource
         """
-        self._resources[resource.name] = None
+        if type(resource) is not str:
+            raise TypeError
+        self._resources[resource] = None
 
     def removeResource(self, resource):
         """
